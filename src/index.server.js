@@ -5,7 +5,8 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 //routes
-import userRoutes from './routes/user.js';
+import authRoutes from './routes/auth.js';
+import adminRoutes from './routes/admin/auth.js';
 
 //enviroment variable or you can say constants
 dotenv.config();
@@ -25,7 +26,9 @@ mongoose
   }); 
 
 app.use(bodyParser());
-app.use('/api',userRoutes); 
+app.use('/api',authRoutes);
+app.use('/api',adminRoutes);
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
