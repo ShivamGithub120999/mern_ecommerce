@@ -1,7 +1,7 @@
 import express from 'express';
 import signup from '../controller/auth.js'
 import {signin} from "../controller/auth.js"
-import {requireSignin} from "../controller/auth.js"
+import {requireSignin} from "../common-middleware/index.js"
 import {validateSignupRequest , isRequestValidated , validateSigninRequest} from ".././validators/auth.js"
 
 const router = express.Router();

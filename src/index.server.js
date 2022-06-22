@@ -1,12 +1,12 @@
 import express  from 'express'
 import dotenv from 'dotenv'
 const app = express();
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 //routes
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin/auth.js';
+import categoryRoutes from "./routes/category.js";
 
 //enviroment variable or you can say constants
 dotenv.config();
@@ -25,9 +25,10 @@ mongoose
     console.log("Database connected");
   }); 
 
-app.use(bodyParser());
+app.use(express.json());
 app.use('/api',authRoutes);
 app.use('/api',adminRoutes);
+app.use('/api',categoryRoutes);
 
 
 app.listen(process.env.PORT, () => {
