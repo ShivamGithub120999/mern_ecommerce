@@ -1,8 +1,9 @@
 import User from "../models/user.js"
 import jwt from 'jsonwebtoken';
+import { validationResult } from 'express-validator';
 
 export default function signup(req,res){
-    console.log("Signup")
+    console.log("Hello")
     User.findOne({email:req.body.email})
     .exec((error,user) => {
         if(user) return res.status(400).json({
