@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin/auth.js';
 import categoryRoutes from "./routes/category.js";
+import productRoutes from "./routes/product.js"
 
 //enviroment variable or you can say constants
 dotenv.config();
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use('/api',authRoutes);
 app.use('/api',adminRoutes);
 app.use('/api',categoryRoutes);
+app.use('/api',productRoutes);
 
 
 app.listen(process.env.PORT, () => {
