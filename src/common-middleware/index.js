@@ -14,15 +14,16 @@ export function requireSignin(req, res, next) {
 }
 
 export function userMiddleware(req, res, next) {
-    /* if (req.user.role !== "user") {
+    if (req.user.role !== "user") {
     return res.status(400).json({ message: "User Access denied" });
-  } */
+  }
   next();
 }
 
 export function adminMiddleware(req, res, next) {
-  /* if (req.user.role !== "admin") {
+  console.log("req.user",req.user);
+  if (req.user.role !== "admin") {
     return res.status(400).json({ message: "Admin Access denied" });
-  } */
+  }
   next();
 }

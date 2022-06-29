@@ -14,4 +14,4 @@ router.post('/profile',requireSignin,(req,res) => {
   res.status(200).json({user:'profile'})
 });
 
-export default router;
+export default router; 
