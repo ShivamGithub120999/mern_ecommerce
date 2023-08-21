@@ -2,7 +2,7 @@ import express from 'express';
 import { requireSignin } from "../common-middleware/index.js"
 import { adminMiddleware } from "../common-middleware/index.js"
 import  Product  from "../models/product.js"
-import { createProduct } from "../controller/product.js"
+import { createProduct, getProductDetailsById, getProductsBySlug } from "../controller/product.js"
 import multer from 'multer';
 import shortid from 'shortid';
 import path from 'path';
@@ -25,6 +25,8 @@ const storage = multer.diskStorage({
   const upload = multer({ storage });
 
 router.post('/product/create',requireSignin,adminMiddleware,upload.array('productPicture'),createProduct);
+router.get('/products/:slug',getProductsBySlug)
 //router.get('/category/getcategory',getCategories);
+router.get('/product/:productId',getProductDetailsById);
 
 export default router;

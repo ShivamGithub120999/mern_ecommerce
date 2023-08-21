@@ -2,13 +2,22 @@ import express  from 'express'
 import dotenv from 'dotenv'
 const app = express();
 import mongoose from 'mongoose';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+import path from 'path';
+import cors from 'cors';
 
 //routes
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin/auth.js';
 import categoryRoutes from "./routes/category.js";
 import productRoutes from "./routes/product.js"
-
+import cartRoutes from "./routes/cart.js"
+import initialDataRoutes from './routes/admin/initialData.js' 
+import pageRoutes from "./routes/admin/page.js";
+import addressRoutes from "./routes/address.js";
+import orderRoutes from "./routes/order.js";
 //enviroment variable or you can say constants
 dotenv.config();
 
@@ -26,12 +35,18 @@ mongoose
     console.log("Database connected");
   }); 
 
+app.use(cors());
 app.use(express.json());
+app.use('/public',express.static(path.join(__dirname,'uploads')));
 app.use('/api',authRoutes);
 app.use('/api',adminRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',productRoutes);
-
+app.use("/api",cartRoutes);
+app.use('/api',initialDataRoutes);
+app.use("/api",pageRoutes);
+app.use("/api",addressRoutes);
+app.use("/api",orderRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
