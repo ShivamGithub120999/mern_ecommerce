@@ -54,3 +54,5 @@ export const getCategories = (req, res) => {
         }
     })
 }
+
+//This is the commit
