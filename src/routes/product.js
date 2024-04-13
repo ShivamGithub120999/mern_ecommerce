@@ -2,7 +2,7 @@ import express from 'express';
 import { requireSignin } from "../common-middleware/index.js"
 import { adminMiddleware } from "../common-middleware/index.js"
 import  Product  from "../models/product.js"
-import { createProduct, getProductDetailsById, getProductsBySlug } from "../controller/product.js"
+import { createProduct, deleteProductById, getProductDetailsById, getProducts, getProductsBySlug } from "../controller/product.js"
 import multer from 'multer';
 import shortid from 'shortid';
 import path from 'path';
@@ -28,5 +28,7 @@ router.post('/product/create',requireSignin,adminMiddleware,upload.array('produc
 router.get('/products/:slug',getProductsBySlug)
 //router.get('/category/getcategory',getCategories);
 router.get('/product/:productId',getProductDetailsById);
+router.delete("/product/deleteProductById",requireSignin,adminMiddleware,deleteProductById);
+router.post("/product/getProducts",requireSignin,adminMiddleware,getProducts);
 
 export default router;

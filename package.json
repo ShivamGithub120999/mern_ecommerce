@@ -4,7 +4,7 @@
   "description": "This is backend of ecommerce flipkart clone project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon G:/mern-ecommerce/Project/ecommerce-back-end/src/index.server.js"
+    "start": "nodemon G:/mern-ecommerce/Project/mern_ecommerce_backend/src/index.server.js"
   },
   "keywords": [
     "ecommerce",

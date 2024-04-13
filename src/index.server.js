@@ -18,6 +18,7 @@ import initialDataRoutes from './routes/admin/initialData.js'
 import pageRoutes from "./routes/admin/page.js";
 import addressRoutes from "./routes/address.js";
 import orderRoutes from "./routes/order.js";
+import adminOrderRoute from "./routes/admin/order.routes.js";
 //enviroment variable or you can say constants
 dotenv.config();
 
@@ -32,7 +33,7 @@ mongoose
     }
   )
   .then(() => {
-    console.log("Database connected");
+    console.log("Database connectedd");
   }); 
 
 app.use(cors());
@@ -47,6 +48,7 @@ app.use('/api',initialDataRoutes);
 app.use("/api",pageRoutes);
 app.use("/api",addressRoutes);
 app.use("/api",orderRoutes);
+app.use("/api", adminOrderRoute);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
